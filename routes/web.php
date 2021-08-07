@@ -33,6 +33,8 @@ Route::group(['prefix' => 'dashboard'], function () {
 
     Route::post('/logout/submit', 'App\Http\Controllers\AdminAuth\AuthenticatedSessionController@logout')->name('dashboard.logout.submit');
 
+    Route::resource('category', 'App\Http\Controllers\CategoryController', ['names' => 'dashboard.category']);
+    Route::resource('book', 'App\Http\Controllers\BookController', ['names' => 'dashboard.book']);
     // Route::get('/password/reset', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('dashboard.login');
     // Route::post('/login/submit', 'App\Http\Controllers\Auth\LoginController@login')->name('dashboard.login.submit');
 });

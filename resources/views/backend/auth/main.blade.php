@@ -28,12 +28,12 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="hidden xl:flex flex-col min-h-screen">
                     <a href="" class="-intro-x flex items-center pt-5">
                         <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{ asset('dashboard-assets/dist/images/logo.svg') }}">
-                        <span class="text-white text-lg ml-3"> Mid<span class="font-medium">One</span> </span>
+                        <span class="text-white text-lg ml-3"> Old<span class="font-medium">Book</span> </span>
                     </a>
                     <div class="my-auto">
                         <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dashboard-assets/dist/images/illustration.svg') }}">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            A few more clicks to 
+                            A few more clicks to
                             <br>
                             sign in to your account.
                         </div>
@@ -48,7 +48,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 @yield('auth-content')
                 <!-- END: Login Form -->
             </div>
-            
+
         </div>
         @include('backend.layouts.partials.scripts')
     </body>

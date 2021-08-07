@@ -47,6 +47,25 @@ class RolePermissionSeeder extends Seeder
             'role.edit',
             'role.delete',
             'role.approve',
+            //category create
+            'category.create',
+            'category.view',
+            'category.edit',
+            'category.delete',
+            'category.approve',
+            //category create
+            'book.create',
+            'book.view',
+            'book.edit',
+            'book.delete',
+            'book.approve',
+            //category create
+            'order.create',
+            'order.view',
+            'order.edit',
+            'order.delete',
+            'order.approve',
+
         ];
 
         $permissions_users = [

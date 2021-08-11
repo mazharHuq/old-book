@@ -8,7 +8,7 @@
 @section('admin-section')
     @include('backend.layouts.partials.alerts')
     <a href="{{ route('dashboard.category.create') }}" style="max-width: 180px"
-       class="button mt-8 w-100 mr-2 mb-2 flex bg-theme-1 text-white"> <svg class="mr-2"
+       class="button mt-8 w-100 mr-2 mb-2 flex bg-theme-9 text-white"> <svg class="mr-2"
                                                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> Create a New Role </a>
     <table class="table table-report -mt-2">
         <thead>

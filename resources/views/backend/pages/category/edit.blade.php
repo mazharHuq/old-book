@@ -28,7 +28,7 @@
 
 
                     <div class="sm:ml-20 sm:pl-5 mt-5">
-                        <input type="submit" class="button bg-theme-1 text-white" value="Create" />
+                        <input type="submit" class="button bg-theme-9 text-white" value="Update" />
                     </div>
                 </div>
             </form>

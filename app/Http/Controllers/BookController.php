@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -13,7 +15,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $categoriess=Category::all();
+        $books=Book::all();
+
+        return  view('backend.pages.books.index',compact('books','categoriess'));
     }
 
     /**
@@ -23,7 +28,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $categories=Category::all();
+        return view('backend.pages.books.create',compact('categories'));
     }
 
     /**
@@ -34,6 +40,12 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $book=new Book();
+        $book->book_name=$request->book_name;
+        $book->author=$request->author;
+        $book->save();
+        $book->categories()->sync($request->categories_id);
+        return redirect()->back();
         //
     }
 

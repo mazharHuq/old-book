@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +26,8 @@ class BookController extends Controller
      */
     public function index()
     {
+        $user=User::find(1);
+
         $categoriess=Category::all();
         $books=Book::all();
 
@@ -40,9 +53,25 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $mainImageLoc = null;
+        if ($request->hasFile('main_image')) {
+            $validate = $request->validate([
+                'main_image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+            $mainImageLoc = $request->main_image->store('images', 'public');
+        }
+
+
         $book=new Book();
         $book->book_name=$request->book_name;
+        $book->image=$mainImageLoc;
         $book->author=$request->author;
+        $book->user_id=$this->user->id;
+        $book->details=$request->details;
+        $book->used=$request->used;
+        $book->buy_price=$request->buy_price;
+        $book->sell_price=$request->sell_price;
+
         $book->save();
         $book->categories()->sync($request->categories_id);
         return redirect()->back();
@@ -91,6 +120,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book=Book::find($id);
+        $book->categories()->detach();
+        $book->delete();
+        return redirect()->back();
     }
 }

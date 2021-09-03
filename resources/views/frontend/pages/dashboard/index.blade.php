@@ -3,10 +3,15 @@
 @endsection
 
 @extends('frontend.layouts.main')
-@section('content')
-<div>
+@section('front-content')
+        @php
+        $categories=\App\Models\Category::all();
 
-    <nav class="bg-gray-800 text-white">
+
+        @endphp
+
+
+            <nav class="bg-gray-800 text-white">
         <div class="container flex">
             <!--All Categories-->
             <div class="items-center bg-primary flex cursor-pointer px-8 py-4 relative group">
@@ -16,22 +21,13 @@
                 <span class="capitalize ml-2 text-white"> All Categories</span>
                 <!--Dropsdown-->
                 <div class="absolute top-full left-0 w-full  text-red-500 bg-white shadow-md   py-3 divide-y divide-dashed divide-gray-200 opacity-0 group-hover:opacity-100 transition delay-300 invisible group-hover:visible">
-                    <a href="" class="flex items-center py-3 px-3">
-                        <i class="fas fa-book mx-4 "></i>
-                        <span class=" text-gray-800">Poem </span>
-                    </a>
-                    <a href="" class="flex items-center py-3 px-3">
-                        <i class="fas fa-book mx-4 "></i>
-                        <span class=" text-gray-800">Poem </span>
-                    </a>
-                    <a href="" class="flex items-center py-3 px-3 text-gray-800 hover:bg-gray-800 hover:text-blue-50">
-                        <i class="fas fa-book mx-4 "></i>
-                        <span class="  hover:text-blue-50">Poem </span>
-                    </a>
-                    <a href="" class="flex items-center py-3 px-3">
-                        <i class="fas fa-book mx-4 "></i>
-                        <span class=" text-gray-800">Poem </span>
-                    </a>
+                   @foreach($categories as $category)
+                        <a href="{{route('') }}" class="flex items-center py-3 px-3 text-gray-800 hover:bg-gray-800 hover:text-blue-50">
+                            <i class="fas fa-book mx-4 "></i>
+                            <span class="  hover:text-blue-50">{{$category->category_name}} </span>
+                        </a>
+                    @endforeach
+
 
                 </div>
                 <!--Dropdown-end-->
@@ -49,6 +45,6 @@
             </div>
         </div>
     </nav>
-</div>    <!--Banner-->
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam nemo reiciendis temporibus?
+
+
 @endsection

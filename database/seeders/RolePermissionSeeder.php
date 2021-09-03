@@ -82,7 +82,7 @@ class RolePermissionSeeder extends Seeder
             $roleGod->givePermissionTo($permission);
         }
 
-        //Create and Assign Premission for users
+        //Create and Assign Permission for users
         for ($i = 0; $i < count($permissions_users); $i++) {
             //Create Permission
             $permission_users = Permission::create(['name' => $permissions_users[$i], 'guard_name' => 'web']);

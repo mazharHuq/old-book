@@ -9,9 +9,20 @@ class Book extends Model
 {
     protected $fillable=[
         'book_name',
+        'user_id',
         'author',
+        'details',
+        'used',
+        'buy_price',
+        'image',
+        'sell_price',
+        'img'
    ];
     public function categories(){
         return $this->belongsToMany(Category::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+
     }
 }

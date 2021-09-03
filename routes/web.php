@@ -15,13 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('visitor.index ');
 });
+Route::group(['prefix' => '/'], function () {
 
+    Route::resource('/visitor','App\Http\Controllers\Frontend\HomeController',['name'=>'visitor']);
+    Route::get('/bookDetails/{id}', 'App\Http\Controllers\Frontend\HomeController@bookDetails')
+        ->name('bookDetails');
+});
 Route::get('/dashboard_old', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard_old');
 
+
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', 'App\Http\Controllers\UserController@index')->name('user');
+    Route::get('/login', 'App\Http\Controllers\UserAuth\AuthenticatedSessionController@showLoginForm')->name('user.login');
+    Route::post('/login/submit', 'App\Http\Controllers\UserAuth\AuthenticatedSessionController@login')->name('user.login.submit');
+Route::post('/logout/submit', 'App\Http\Controllers\UserAuth\AuthenticatedSessionController@logout')->name('user.logout.submit');
+
+});
 Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
     Route::resource('roles', 'App\Http\Controllers\RolesController', ['names' => 'dashboard.roles']);

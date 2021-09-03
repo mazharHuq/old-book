@@ -125,6 +125,7 @@ class CategoryController extends Controller
             abort(403, 'Unauthorized Access!');
         }
         $category=Category::find($id);
+        $category->books()->detach();
         $category->delete();
         session()->flash('success', 'Category has been Deleted!!');
         return back();

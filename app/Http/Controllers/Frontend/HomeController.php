@@ -19,11 +19,22 @@ class HomeController extends Controller
         return view('visitor.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function  search(Request $request)
+
+    {
+        $data=$request->searchValue;
+        $searchList="";
+        $books=Book::where('book_name','like','%'.$data."%")->get();
+       foreach ($books as $book)
+       {
+           $x="<li><img src=".URL('storage').'/'.$book->image ." alt=''>
+           <div class='search2'>
+           <a href=".route('bookDetails',$book->id).">"
+               .$book->book_name."</a><span>".$book->sell_price."</span></div></li><br>";
+          $searchList=$searchList.$x;
+       }
+        return response()->json(['success'=>$searchList]);
+    }
     public function create()
     {
         //
@@ -50,7 +61,8 @@ class HomeController extends Controller
     {
         $category=Category::find($id);
         $books=$category->books;
-        return view('visitor.show',compact('books','category'));
+        $book_count=count($books);
+        return view('frontend.pages.category-show',compact('books','category','book_count'));
     }
 
     /**
@@ -90,6 +102,6 @@ class HomeController extends Controller
     {
         $book=Book::find($id);
 
-        return view('visitor.bookDetails',compact('book'));
+        return view('frontend.pages.book-details',compact('book'));
     }
 }

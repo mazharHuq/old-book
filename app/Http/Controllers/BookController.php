@@ -7,9 +7,17 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class BookController extends Controller
 {
+
+    public function testSearch(Request $request)
+    {
+        return $request
+            ->score[2][12];
+
+    }
     public $user;
 
     public function __construct()
@@ -18,6 +26,15 @@ class BookController extends Controller
             $this->user = Auth::guard('admin')->user();
             return $next($request);
         });
+    }
+    public function downloadpdf()
+    {
+        $user=User::find(1);
+
+        $categoriess=Category::all();
+        $books=Book::all();
+        $pdf = PDF::loadView('backend.pages.books.index',compact('books','categoriess'));
+        return $pdf->stream('document.pdf');
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +49,8 @@ class BookController extends Controller
         $books=Book::all();
 
         return  view('backend.pages.books.index',compact('books','categoriess'));
-    }
+       
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -66,7 +84,7 @@ class BookController extends Controller
         $book->book_name=$request->book_name;
         $book->image=$mainImageLoc;
         $book->author=$request->author;
-        $book->user_id=$this->user->id;
+        $book->admin_id=$this->user->id;
         $book->details=$request->details;
         $book->used=$request->used;
         $book->buy_price=$request->buy_price;

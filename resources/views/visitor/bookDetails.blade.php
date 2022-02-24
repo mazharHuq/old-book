@@ -2,7 +2,7 @@
     {{$book->book_name}}
 @endsection
 
-@extends('frontend.layouts.main')
+@extends('-old.layouts.main')
 @section('front-content')
     <!-- component -->
     <section class="text-gray-700 body-font overflow-hidden bg-white">

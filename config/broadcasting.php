@@ -29,6 +29,10 @@ return [
     */
 
     'connections' => [
+        'larasocket' => [
+            'driver' => 'larasocket',
+            'token' => env('LARASOCKET_TOKEN'),
+        ],
 
         'pusher' => [
             'driver' => 'pusher',

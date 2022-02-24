@@ -4,8 +4,27 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/larasocket/larasocket-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mpdf/mpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/setasign/fpdi" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/carlos-meneses/laravel-mpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/tecnickcom/tcpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/elibyy/tcpdf-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/browsershot" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-sitemap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/robots-txt" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/image-optimizer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/crawler" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/temporary-directory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/league/glide" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nicmart/tree" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/dom-crawler" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.6.0" level="application" />
   </component>
 </module>

@@ -1,4 +1,4 @@
-@extends('frontend.auth.main')
+@extends('-old.auth.main')
 
 @section('auth-title')
     Login

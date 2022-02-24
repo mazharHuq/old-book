@@ -10,6 +10,7 @@ class Book extends Model
     protected $fillable=[
         'book_name',
         'user_id',
+        'admin_id',
         'author',
         'details',
         'used',
@@ -23,6 +24,10 @@ class Book extends Model
     }
     public function user(){
         return $this->belongsTo(User::class);
+
+    }
+    public function admin(){
+        return $this->belongsTo(Admin::class);
 
     }
 }

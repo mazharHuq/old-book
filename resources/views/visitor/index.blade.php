@@ -2,7 +2,7 @@
     Category Control
 @endsection
 
-@extends('frontend.layouts.main')
+@extends('-old.layouts.main')
 @section('front-content')
 
 

@@ -19,6 +19,7 @@ class Admin extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
         'email',
         'password',
     ];
@@ -41,4 +42,13 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+   public function chat()
+   {
+       $this->hasMany(Chat::class);
+   }
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+
+    }
 }

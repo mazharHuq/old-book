@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1345256bb21fd67bb9348a8c1afe86e66f5f2243',
+    'reference' => '7205ff9fcada5a7daa8b69616383ecf100a60d87',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -41,6 +41,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'carlos-meneses/laravel-mpdf' => 
+    array (
+      'pretty_version' => '2.1.5',
+      'version' => '2.1.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '810008e1a4b82fb6c8c74cdf32fd130195756027',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -109,6 +118,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '0dbf5d78455d4d6a41d186da50adc1122ec066f4',
+    ),
+    'elibyy/tcpdf-laravel' => 
+    array (
+      'pretty_version' => '8.1.2',
+      'version' => '8.1.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '50a5c6bfc38fc0c03deb16d4065267f471c787d9',
     ),
     'facade/flare-client-php' => 
     array (
@@ -435,12 +453,30 @@ private static $installed = array (
         0 => 'v8.35.1',
       ),
     ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.7.1',
+      'version' => '2.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '744ebba495319501b873a4e48787759c72e3fb8c',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
       array (
         0 => '*',
       ),
+    ),
+    'larasocket/larasocket-driver' => 
+    array (
+      'pretty_version' => '1.0.4',
+      'version' => '1.0.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5dae5bf8b9932885d6773932024e6a8218178973',
     ),
     'laravel/breeze' => 
     array (
@@ -467,7 +503,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1345256bb21fd67bb9348a8c1afe86e66f5f2243',
+      'reference' => '7205ff9fcada5a7daa8b69616383ecf100a60d87',
     ),
     'laravel/sail' => 
     array (
@@ -505,6 +541,15 @@ private static $installed = array (
       ),
       'reference' => '9be3b16c877d477357c015cec057548cf9b2a14a',
     ),
+    'league/glide' => 
+    array (
+      'pretty_version' => '2.0.x-dev',
+      'version' => '2.0.9999999.9999999-dev',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e84ef237030817ab6034b2c17173dd3352a971e1',
+    ),
     'league/mime-type-detection' => 
     array (
       'pretty_version' => '1.7.0',
@@ -531,6 +576,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.0.13',
+      'version' => '8.0.13.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '42f145615cfe830fd432474da1d2e1f927efe402',
     ),
     'mtdowling/cron-expression' => 
     array (
@@ -561,6 +615,15 @@ private static $installed = array (
       ),
       'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
     ),
+    'nicmart/tree' => 
+    array (
+      'pretty_version' => '0.3.1',
+      'version' => '0.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c55ba47c64a3cb7454c22e6d630729fc2aab23ff',
+    ),
     'nikic/php-parser' => 
     array (
       'pretty_version' => 'v4.10.4',
@@ -587,6 +650,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '943b5d70cc5ae7483f6aff6ff43d7e34592ca0f5',
+    ),
+    'paragonie/random_compat' => 
+    array (
+      'pretty_version' => 'v9.99.100',
+      'version' => '9.99.100.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
     ),
     'phar-io/manifest' => 
     array (
@@ -982,6 +1054,51 @@ private static $installed = array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
     ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
+    ),
+    'spatie/browsershot' => 
+    array (
+      'pretty_version' => '3.52.3',
+      'version' => '3.52.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4f8584e835035a4696a496c4508c3c35edaef28a',
+    ),
+    'spatie/crawler' => 
+    array (
+      'pretty_version' => '6.0.2',
+      'version' => '6.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '276ecb429a770474695a1278a9ad3e719fbef259',
+    ),
+    'spatie/image' => 
+    array (
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1ffb276dd6528c6b308d5feb1573299c24fd9613',
+    ),
+    'spatie/image-optimizer' => 
+    array (
+      'pretty_version' => '1.6.2',
+      'version' => '1.6.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6db75529cbf8fa84117046a9d513f277aead90a0',
+    ),
     'spatie/laravel-permission' => 
     array (
       'pretty_version' => '4.0.1',
@@ -990,6 +1107,33 @@ private static $installed = array (
       array (
       ),
       'reference' => '29c05324c170c0be108ccb86dd29f6a719c0a617',
+    ),
+    'spatie/laravel-sitemap' => 
+    array (
+      'pretty_version' => '5.9.2',
+      'version' => '5.9.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'df5c3db511e08a8e64a3d7e28613ab018a99e95d',
+    ),
+    'spatie/robots-txt' => 
+    array (
+      'pretty_version' => '1.0.10',
+      'version' => '1.0.10.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8802a2bee670b3c13cfd21ede0322f72b3efb711',
+    ),
+    'spatie/temporary-directory' => 
+    array (
+      'pretty_version' => '1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f517729b3793bca58f847c5fd383ec16f03ffec6',
     ),
     'swiftmailer/swiftmailer' => 
     array (
@@ -1026,6 +1170,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
+    ),
+    'symfony/dom-crawler' => 
+    array (
+      'pretty_version' => 'v5.4.2',
+      'version' => '5.4.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'bb3bc3699779fc6d9646270789026a7e2cec7ec7',
     ),
     'symfony/error-handler' => 
     array (
@@ -1256,6 +1409,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '89412a68ea2e675b4e44f260a5666729f77f668e',
+    ),
+    'tecnickcom/tcpdf' => 
+    array (
+      'pretty_version' => '6.4.2',
+      'version' => '6.4.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '172540dcbfdf8dc983bc2fe78feff48ff7ec1c76',
     ),
     'theseer/tokenizer' => 
     array (

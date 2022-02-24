@@ -2,7 +2,7 @@
 {{$category->category_name}}
 @endsection
 
-@extends('frontend.layouts.main')
+@extends('-old.layouts.main')
 @section('front-content')
 
 
@@ -23,7 +23,7 @@
                     <div class="bg-white overflow-hidden rounded-sm">
                         <!--      Product Image-->
                         <div class="relative group">
-                            <img src="{{ URL('storage').'/'.$book->image }}"  style="object-fit: fill;height: 300px ;width: 100%;padding-right: 2px;padding-left: 2px" alt="">
+                            <img src="{{ URL('storage').'/'.$book->image }}"   class="object-cover" style="height: 300px ;width: 100%;padding-right: 2px;padding-left: 2px" alt="">
                             <div class="icon absolute bg-black bg-opacity-40  inset-0 flex justify-center items-center space-x-2 opacity-0 group-hover:opacity-100 ">
                                 <a class=" text-lg h-9 w-9 bg-primary hover:bg-gray-800 rounded-full text-white flex items-center justify-center " href="">
                                     <i class="fa fa-search"></i>

@@ -21,6 +21,7 @@
         "tailwindcss": "^2.0.2"
     },
     "dependencies": {
+        "chart.js": "^3.7.1",
         "larasocket-js": "^1.0.16",
         "laravel-echo": "^1.11.2"
     }

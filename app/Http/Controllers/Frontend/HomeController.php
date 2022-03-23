@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('visitor.index');
+    }
+    public function sellerBooks($id){
+        $seller=User::findOrfail($id);
+        $books=$seller->books;
+        return view('frontend.pages.seller-books',compact('seller','books'));
+        return $seller->books;
     }
 
     public function  search(Request $request)

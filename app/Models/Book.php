@@ -17,7 +17,7 @@ class Book extends Model
         'buy_price',
         'image',
         'sell_price',
-        'img'
+        'img','is_sold'
    ];
     public function categories(){
         return $this->belongsToMany(Category::class);

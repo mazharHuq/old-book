@@ -77,7 +77,7 @@
                                 <img src="{{ URL('storage').'/'.$book->image }}" alt="" width="40%" height="150px" style="object-fit: contain;background: rgb(233, 231, 231);">
                                 <div class="p-2 relative w-full">
                                     <a href="{{route('bookDetails',$book->id)}}"> <h4>{{$book->book_name}}</h4></a>
-                                    <h6>by Md. Humayun Kabir</h6>
+                                    <h6>by {{$book->author}}</h6>
                                     <span class="color-primary">Tk {{$book->sell_price}} </span>
                                     <span class="bottom-left"> {{$book->created_at->diffForHumans()}}</span>
                                 </div>

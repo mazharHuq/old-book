@@ -16,7 +16,12 @@ class ChatController extends Controller
     {
         $this->middleware(function ($request, $next) {
             $this->user = Auth::guard('admin')->user();
-            return $next($request);
+            if($this->user){
+                return $next($request);
+            }else{
+                return redirect('/admin-dashboard/login');
+            }
+
         });
     }
     /**

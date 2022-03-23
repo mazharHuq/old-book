@@ -9,13 +9,16 @@ use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
 {
+    use InstallsApiStack, InstallsBladeStack, InstallsInertiaStacks;
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'breeze:install
-                            {--inertia : Indicates that the Inertia stack should be installed}
+    protected $signature = 'breeze:install {stack=blade : The development stack that should be installed (blade,react,vue,api)}
+                            {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
+                            {--pest : Indicate that Pest should be installed }
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
@@ -32,140 +35,37 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if ($this->option('inertia')) {
-            return $this->installInertiaStack();
+        if ($this->option('inertia') || $this->argument('stack') === 'vue') {
+            return $this->installInertiaVueStack();
+        } elseif ($this->argument('stack') === 'react') {
+            return $this->installInertiaReactStack();
+        } elseif ($this->argument('stack') === 'api') {
+            return $this->installApiStack();
+        } else {
+            return $this->installBladeStack();
         }
-
-        // NPM Packages...
-        $this->updateNodePackages(function ($packages) {
-            return [
-                '@tailwindcss/forms' => '^0.2.1',
-                'alpinejs' => '^2.7.3',
-                'autoprefixer' => '^10.1.0',
-                'postcss' => '^8.2.1',
-                'postcss-import' => '^12.0.1',
-                'tailwindcss' => '^2.0.2',
-            ] + $packages;
-        });
-
-        // Controllers...
-        (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/App/Http/Controllers/Auth', app_path('Http/Controllers/Auth'));
-
-        // Requests...
-        (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/App/Http/Requests/Auth', app_path('Http/Requests/Auth'));
-
-        // Views...
-        (new Filesystem)->ensureDirectoryExists(resource_path('views/auth'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('views/layouts'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('views/components'));
-
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/resources/views/auth', resource_path('views/auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/resources/views/layouts', resource_path('views/layouts'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/resources/views/components', resource_path('views/components'));
-
-        copy(__DIR__.'/../../stubs/default/resources/views/dashboard.blade.php', resource_path('views/dashboard.blade.php'));
-
-        // Components...
-        (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/App/View/Components', app_path('View/Components'));
-
-        // Tests...
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/tests/Feature', base_path('tests/Feature'));
-
-        // Routes...
-        copy(__DIR__.'/../../stubs/default/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__.'/../../stubs/default/routes/auth.php', base_path('routes/auth.php'));
-
-        // "Dashboard" Route...
-        $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
-        $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
-        $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
-
-        // Tailwind / Webpack...
-        copy(__DIR__.'/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__.'/../../stubs/default/webpack.mix.js', base_path('webpack.mix.js'));
-        copy(__DIR__.'/../../stubs/default/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__.'/../../stubs/default/resources/js/app.js', resource_path('js/app.js'));
-
-        $this->info('Breeze scaffolding installed successfully.');
-        $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
     }
 
     /**
-     * Install the Inertia Breeze stack.
+     * Install Breeze's tests.
      *
      * @return void
      */
-    protected function installInertiaStack()
+    protected function installTests()
     {
-        // Install Inertia...
-        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.3.5', 'laravel/sanctum:^2.6', 'tightenco/ziggy:^1.0');
+        (new Filesystem)->ensureDirectoryExists(base_path('tests/Feature/Auth'));
 
-        // NPM Packages...
-        $this->updateNodePackages(function ($packages) {
-            return [
-                '@inertiajs/inertia' => '^0.8.4',
-                '@inertiajs/inertia-vue3' => '^0.3.5',
-                '@inertiajs/progress' => '^0.2.4',
-                '@tailwindcss/forms' => '^0.2.1',
-                '@vue/compiler-sfc' => '^3.0.5',
-                'autoprefixer' => '^10.2.4',
-                'postcss' => '^8.2.1',
-                'postcss-import' => '^12.0.1',
-                'tailwindcss' => '^2.0.3',
-                'vue' => '^3.0.5',
-                'vue-loader' => '^16.1.2',
-            ] + $packages;
-        });
+        $stubStack = $this->argument('stack') === 'api' ? 'api' : 'default';
 
-        // Controllers...
-        (new Filesystem)->ensureDirectoryExists(app_path('Http/Controllers/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/app/Http/Controllers/Auth', app_path('Http/Controllers/Auth'));
+        if ($this->option('pest')) {
+            $this->requireComposerPackages('pestphp/pest:^1.16', 'pestphp/pest-plugin-laravel:^1.1');
 
-        // Requests...
-        (new Filesystem)->ensureDirectoryExists(app_path('Http/Requests/Auth'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/App/Http/Requests/Auth', app_path('Http/Requests/Auth'));
-
-        // Middleware...
-        $this->installMiddlewareAfter('SubstituteBindings::class', '\App\Http\Middleware\HandleInertiaRequests::class');
-
-        copy(__DIR__.'/../../stubs/inertia/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
-
-        // Views...
-        copy(__DIR__.'/../../stubs/inertia/resources/views/app.blade.php', resource_path('views/app.blade.php'));
-
-        // Components + Pages...
-        (new Filesystem)->ensureDirectoryExists(resource_path('js/Components'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('js/Layouts'));
-        (new Filesystem)->ensureDirectoryExists(resource_path('js/Pages'));
-
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Components', resource_path('js/Components'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Layouts', resource_path('js/Layouts'));
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/inertia/resources/js/Pages', resource_path('js/Pages'));
-
-        // Tests...
-        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/tests/Feature', base_path('tests/Feature'));
-
-        // Routes...
-        copy(__DIR__.'/../../stubs/inertia/routes/web.php', base_path('routes/web.php'));
-        copy(__DIR__.'/../../stubs/inertia/routes/auth.php', base_path('routes/auth.php'));
-
-        // "Dashboard" Route...
-        $this->replaceInFile('/home', '/dashboard', resource_path('js/Pages/Welcome.vue'));
-        $this->replaceInFile('Home', 'Dashboard', resource_path('js/Pages/Welcome.vue'));
-        $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
-
-        // Tailwind / Webpack...
-        copy(__DIR__.'/../../stubs/inertia/tailwind.config.js', base_path('tailwind.config.js'));
-        copy(__DIR__.'/../../stubs/inertia/webpack.mix.js', base_path('webpack.mix.js'));
-        copy(__DIR__.'/../../stubs/inertia/webpack.config.js', base_path('webpack.config.js'));
-        copy(__DIR__.'/../../stubs/inertia/resources/css/app.css', resource_path('css/app.css'));
-        copy(__DIR__.'/../../stubs/inertia/resources/js/app.js', resource_path('js/app.js'));
-
-        $this->info('Breeze scaffolding installed successfully.');
-        $this->comment('Please execute the "npm install && npm run dev" command to build your assets.');
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/'.$stubStack.'/pest-tests/Feature', base_path('tests/Feature/Auth'));
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/'.$stubStack.'/pest-tests/Unit', base_path('tests/Unit'));
+            (new Filesystem)->copy(__DIR__.'/../../stubs/'.$stubStack.'/pest-tests/Pest.php', base_path('tests/Pest.php'));
+        } else {
+            (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/'.$stubStack.'/tests/Feature', base_path('tests/Feature/Auth'));
+        }
     }
 
     /**

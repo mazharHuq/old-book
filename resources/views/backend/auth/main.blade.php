@@ -1,13 +1,5 @@
 <!DOCTYPE html>
-<!--
-Template Name: Midone - HTML Admin Dashboard Template
-Author: Left4code
-Website: http://www.left4code.com/
-Contact: muhammadrizki@left4code.com
-Purchase: https://themeforest.net/user/left4code/portfolio
-Renew Support: https://themeforest.net/user/left4code/portfolio
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
+
 <html lang="en">
     <!-- BEGIN: Head -->
     <head>
@@ -26,12 +18,12 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="" class="-intro-x flex items-center pt-5">
+                    <a href="/" class="-intro-x flex items-center pt-5">
                         <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{ asset('dashboard-assets/dist/images/logo.svg') }}">
                         <span class="text-white text-lg ml-3"> Old<span class="font-medium">Book</span> </span>
                     </a>
                     <div class="my-auto">
-                        <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dashboard-assets/dist/images/illustration.svg') }}">
+                        <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dashboard-assets/dist/images/book-tree-removebg-preview.png') }}">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             A few more clicks to
                             <br>

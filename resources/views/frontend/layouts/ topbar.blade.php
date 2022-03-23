@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>@yield('page-title', 'Home')</title>
+    <title>@yield('page-title', 'Book Roy')</title>
 </head>
 <body>
 <div class="container-fluid bg-pri"  style="height: 150px">
@@ -25,9 +25,23 @@
                         <a href="" style=" text-decoration: none;"><b style="font-size: 16px;color:white;">All Ads</b></a>
                     </div>
                     <div class="topright">
-                        <a href=""><i class="far fa-comments fa-lg"></i> Chat</a>
-                        <a href="{{route('dashboard')}}"><i class="far fa-user fa-lg"></i> My Account</a>
-                        <button class="btn btn-warning" >POST YOUR AD</button>
+<!--                        <a href=""><i class="far fa-comments fa-lg"></i> Chat</a>-->
+                        @if(auth('web')->user())
+
+                        <a target="_blank" href="{{route('user.login')}}"><i class="fa-solid fa-gem"></i>
+
+
+                            My Account</a>
+                            <button class="btn btn-warning" style="font-weight: bold" >
+                            <a href="{{route('checkout')}}">
+                            Premium <i class="fa-solid fa-gem"></i>
+                           </a> </button>
+
+                        @else
+                        <a target="_blank" href="{{route('user.login')}}"><i class="far fa-user fa-lg"></i> Login</a>
+
+                        @endif
+
                     </div>
                 </div>
 

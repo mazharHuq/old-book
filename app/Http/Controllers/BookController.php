@@ -49,8 +49,8 @@ class BookController extends Controller
         $books=Book::all();
 
         return  view('backend.pages.books.index',compact('books','categoriess'));
-       
-    }   
+
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -71,6 +71,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+
         $mainImageLoc = null;
         if ($request->hasFile('main_image')) {
             $validate = $request->validate([
@@ -92,6 +93,7 @@ class BookController extends Controller
 
         $book->save();
         $book->categories()->sync($request->categories_id);
+
         return redirect()->back();
         //
     }

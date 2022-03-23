@@ -16,7 +16,7 @@
                         $count=0;
 
                     @endphp
-                    <b >Browse items by category<b>
+                    <b >Browse items by category</b>
                         <div class="row mt-4 category " >
                             @foreach($categories as $category)
                             <div class="col-md-4 d-flex">
@@ -35,7 +35,7 @@
 
 
                 </div>
-                
+
                 <!-- Category End Here  -->
 
                 <!-- Extra Info  -->
@@ -54,10 +54,10 @@
                         <div class="money d-flex col-6 " >
                             <span><i class="fas fa-hand-holding-usd fa-7x"></i></span>
                             <div class="p-3">
-                                <h4>Start making money!</h4>
-                                <span>Do you have something to sell?<br>
-                  Post your first ad  and start making money!</span><br>
-                                <button class="btn btn-warning mt-2"><i class="fa fa-plus-circle"></i> Post Your Ad For Free!</button>
+                                <h4>Be Our Premium User</h4>
+                                <span>Be Our Premium User <br>
+                 &Get All Kind of Book Notification and premium Offer</span><br>
+                                <button class="btn btn-warning mt-2"><i class="fa fa-plus-circle"></i> Buy Premium Plan!</button>
 
                             </div>
                         </div>

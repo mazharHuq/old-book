@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'premium'
     ];
 
     /**
@@ -43,7 +44,7 @@ class User extends Authenticatable
     ];
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class,'user_id','id');
 
     }
     public function messages() {
